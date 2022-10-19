@@ -17,6 +17,7 @@
     --border-card: #eeeeee;
 
     --img-overlay: rgba(47, 48, 58, 0.4);
+    --img-do-overlay: rgba(47, 48, 58, 0.8);
     --img-background: #c4c4c4;
 
     --padding-section: 94px;
@@ -50,10 +51,6 @@ body {
     padding-right: 15px;
 }
 
-.link.current {
-    color: var(--accent-color);
-}
-
 /* Списки */
 
 .list {
@@ -64,6 +61,10 @@ body {
 .link {
     color: inherit;
     text-decoration: none;
+
+    transition: color 250ms var(--animation),
+                background-color 250ms var(--animation),
+                border-color 250ms var(--animation);
 }
 
 /* Сховані заголовки */
@@ -90,11 +91,16 @@ body {
     background-color: var(--accent-color);
     border: 1px solid transparent;
     border-radius: 4px;
+    cursor: pointer;
+
+    transition: color 250ms var(--animation),
+                background-color 250ms var(--animation),
+                box-shadow 250ms var(--animation);
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
     background-color: var(--btn-color-active);
-    cursor: pointer;
 }
 
 /* images */
@@ -193,6 +199,16 @@ img {
 .nav-link-hover:hover::after,
 .nav-link-hover:focus::after {
     transform: scaleX(1);
+}
+
+.link.current {
+    color: var(--accent-color);
+    
+}
+
+.nav-link-hover.current::after {
+    transform: none;
+    transition: none;
 }
 
 /* Studio page */
@@ -336,6 +352,12 @@ img {
     padding: 0 0 var(--padding-section) 0;
 }
 
+.section-title {
+    margin-bottom: 50px;
+    font-size: 36px;
+    text-align: center;
+}
+
 .what-we-do .list {
     display: flex;
 }
@@ -348,10 +370,19 @@ img {
     margin-right: 30px;
 }
 
-.section-title {
-    margin-bottom: 50px;
-    font-size: 36px;
+.what-we-do .wrapper {
+    position: relative;
+}
+
+.what-we-do .footer-title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 27px 0;
     text-align: center;
+    background-color: var(--img-do-overlay);
 }
 
 /* Our team */
@@ -409,20 +440,24 @@ img {
     fill: var(--social-primary-color);
 }
 
-.section-team .icon-link {
+.team-list .icon-link {
     width: 44px;
     height: 44px;
+    border-radius: 50%;
+    background-color: transparent;
 }
 
 .team-list .icon-link:hover,
 .team-list .icon-link:focus {
     background-color: var(--accent-color);
-    border-radius: 50%;
 }
 
 .social-icon {
     width: 20px;
     height: 20px;
+    fill: inherit;
+
+    transition: fill 250ms var(--animation);
 }
 
 .team-list .icon-link:hover .social-icon,
@@ -437,21 +472,6 @@ img {
     padding-bottom: var(--padding-section);
 }
 
-.section-customers .icon-link {
-    width: 170px;
-    height: 92px;
-}
-
-.section-customers .icon-link:hover .customers-icon,
-.section-customers .icon-link:focus .customers-icon {
-    fill: var(--accent-color);
-}
-
-.section-customers .icon-link:hover,
-.section-customers .icon-link:focus {
-    border-color: var(--accent-color);
-}
-
 .customers-list {
     display: flex;
 }
@@ -460,19 +480,31 @@ img {
     margin-right: 30px;
 }
 
-.customers-list .link {
-    border: 1px solid var(--social-primary-color);
-    border-radius: 4px;
+.section-customers .icon-link {
+    width: 170px;
+    height: 92px;
 }
 
 .customers-icon {
     width: 106px;
     height: 45px;
+
+    transition: fill 250ms var(--animation);
 }
 
-.icon-sezed {
-    width: 85px;
-    height: 100%;
+.section-customers .icon-link:hover .customers-icon,
+.section-customers .icon-link:focus .customers-icon {
+    fill: var(--accent-color);
+}
+
+.section-customers .icon-link {
+    border: 1px solid var(--social-primary-color);
+    border-radius: 4px;
+}
+
+.section-customers .icon-link:hover,
+.section-customers .icon-link:focus {
+    border-color: var(--accent-color);
 }
 
 /* Portfolio page */
@@ -526,6 +558,8 @@ img {
     margin-bottom: 30px;
     max-width: 370px;
     border: 1px solid var(--border-card);
+
+    transition: box-shadow 250ms var(--animation);
 }
 
 .cards-item:hover,
