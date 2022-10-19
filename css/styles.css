@@ -20,6 +20,8 @@
     --img-background: #c4c4c4;
 
     --padding-section: 94px;
+
+    --animation: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1,
@@ -169,6 +171,30 @@ img {
     color: var(--accent-color);
 }
 
+.nav-link-hover {
+    position: relative;
+}
+
+.nav-link-hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 4px;
+    width: 100%;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 250ms var(--animation);
+}
+
+.nav-link-hover:hover::after,
+.nav-link-hover:focus::after {
+    transform: scaleX(1);
+}
+
 /* Studio page */
 /* Hero */
 
@@ -218,7 +244,7 @@ img {
     height: 100vh;
     opacity: 1;
     background-color: var(--backdrop-color);
-    transition: opacity 250ms linear;
+    transition: opacity 250ms var(--animation);
 }
 
 .is-hidden {
@@ -243,7 +269,7 @@ img {
     border-radius: 4px;
 
     transform: translate(-50%, -50%) scale(1);
-    transition: transform 250ms linear;
+    transition: transform 250ms var(--animation);
 }
 
 .icon-close {
