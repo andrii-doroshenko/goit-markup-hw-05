@@ -2,6 +2,7 @@
     --primary-text-color: #757575;
     --title-text-color: #212121;
     --accent-color: #2196F3;
+    --accent-color-bg: rgba(33, 150, 243, .9);
     --dark-color: #000000;
     --backdrop-color: rgba(0, 0, 0, .2);
     --icon-border: rgba(0, 0, 0, 0.1);
@@ -261,6 +262,8 @@ img {
     opacity: 1;
     background-color: var(--backdrop-color);
     transition: opacity 250ms var(--animation);
+
+    z-index: 1;
 }
 
 .is-hidden {
@@ -323,7 +326,7 @@ img {
     text-transform: uppercase;
 }
 
-.thumb {
+.benefits .thumb {
     margin-bottom: 30px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -587,6 +590,41 @@ img {
 
 .cards-item-description .description {
     margin-bottom: 0;
+}
+
+/* cards-hover */
+
+.card-list .wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.cards-item .thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--accent-color-bg);
+    
+    transform: translateY(101%);
+    transition: transform 250ms var(--animation);
+}
+
+.thumb-description {
+    position: absolute;
+    top: 50%;
+    padding: 0 24px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-white);
+
+    transform: translateY(-50%);
+}
+
+.cards-item:hover .thumb,
+.cards-item:focus .thumb {
+    transform: translateY(0);
 }
 
 
