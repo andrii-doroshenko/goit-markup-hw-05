@@ -295,11 +295,14 @@ img {
     position: absolute;
     top: 8px;
     right: 8px;
-    cursor: pointer;
     width: 30px;
     height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid var(--icon-border);
     border-radius: 50%;
+    cursor: pointer;
 }
 
 /* Benefits */
